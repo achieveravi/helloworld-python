@@ -9,6 +9,11 @@ authors = [
 requires-python = ">=3.12"
 dependencies = []
 
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["helloworld_python_achieveravi*"]
+
+
 [project.scripts]
 helloworld-python = "helloworld_python:main"
 
