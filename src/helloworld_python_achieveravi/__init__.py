@@ -1,4 +1,4 @@
-from utils.basic_maths import BasicMath
+from .utils.basic_maths import BasicMath
 def main() -> None:
     print("Hello from helloworld-python!")
     print(f"adding 2 with 3 gives {BasicMath.add(2, 3)}")
