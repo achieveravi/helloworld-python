@@ -26,7 +26,7 @@ jobs:
 
     # Installs uv and sets up the specified Python version instantly
     - name: Set up uv and Python
-      uses: astral-sh/setup-uv@v10
+      uses: astral-sh/setup-uv@v10.0.1
       with:
         version: "latest"
         python-version: "3.12" # Matches your pyproject.toml requirement (>=3.12)
