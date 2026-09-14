@@ -1,6 +1,6 @@
 [project]
 name = "helloworld_python_achieveravi"
-version = "0.1.4"
+version = "0.1.7"  # Bump the version number
 description = "Add your description here"
 readme = "README.md"
 authors = [
@@ -12,9 +12,12 @@ dependencies = []
 [project.scripts]
 helloworld-python = "helloworld_python_achieveravi:main"
 
-# Force uv_build to map your layout directly
+# FIX: Use 'modules' to explicitly list subdirectories for uv_build
 [tool.uv.build-backend]
-module-name = "helloworld_python_achieveravi"
+modules = [
+    "helloworld_python_achieveravi",
+    "helloworld_python_achieveravi.utils"
+]
 module-root = "src"
 
 [build-system]
