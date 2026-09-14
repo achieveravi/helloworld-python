@@ -9,7 +9,6 @@ on:
 
 jobs:
   build-n-publish:
-
     name: Build and publish Python distro to PyPI
     runs-on: ubuntu-latest
     
@@ -19,21 +18,23 @@ jobs:
     
     environment:
       name: pypi
-      url: https://pypi.org/achieveravi/helloworld-python
+      url: https://pypi.org
 
     steps:
     - name: Checkout source code
       uses: actions/checkout@v4
-    - name: Set up Python 
-      uses: actions/setup-python@v5
+
+    # Installs uv and sets up the specified Python version instantly
+    - name: Set up uv and Python
+      uses: astral-sh/setup-uv-action@v5
       with:
-        python-version: "3.11"
-    - name: Install build dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install build
+        version: "latest"
+        python-version: "3.12" # Matches your pyproject.toml requirement (>=3.12)
+
+    # Uses uv to build both the source tarball and wheel distributions
     - name: Build source and wheel distributions
-      run: |
-        python -m build
+      run: uv build
+
     - name: Publish to PyPI
       uses: pypa/gh-action-pypi-publish@release/v1
+
